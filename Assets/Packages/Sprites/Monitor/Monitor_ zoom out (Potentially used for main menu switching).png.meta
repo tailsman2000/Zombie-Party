@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 525e817a5e0ab4482ad4bb0dd1979a42
+guid: b6cf0b86da803412180e1c00ec5d302a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1236075898273611036
-    second: Jar of strawberry jam-1.png_0
+      213: -6115792286253478143
+    second: Monitor_ zoom out (Potentially used for main menu switching)_0
+  - first:
+      213: -1877977622714724707
+    second: Monitor_ zoom out (Potentially used for main menu switching)_1
+  - first:
+      213: 544086558813373648
+    second: Monitor_ zoom out (Potentially used for main menu switching)_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar of strawberry jam-1.png_0
+      name: Monitor_ zoom out (Potentially used for main menu switching)_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 13
-        height: 12
+        x: 0
+        y: 15
+        width: 32
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1d35000b7c672110800000000000000
-      internalID: 1236075898273611036
+      spriteID: 10f89c98157502ba0800000000000000
+      internalID: -6115792286253478143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monitor_ zoom out (Potentially used for main menu switching)_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ec4f55d4510f5e0800000000000000
+      internalID: -1877977622714724707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monitor_ zoom out (Potentially used for main menu switching)_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d4c221b7dbfc8700800000000000000
+      internalID: 544086558813373648
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar of strawberry jam-1.png_0: 1236075898273611036
+      Monitor_ zoom out (Potentially used for main menu switching)_0: -6115792286253478143
+      Monitor_ zoom out (Potentially used for main menu switching)_1: -1877977622714724707
+      Monitor_ zoom out (Potentially used for main menu switching)_2: 544086558813373648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

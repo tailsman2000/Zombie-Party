@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 525e817a5e0ab4482ad4bb0dd1979a42
+guid: 7deeea7dc6d4f4df7b8312b62c828c92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1236075898273611036
-    second: Jar of strawberry jam-1.png_0
+      213: -7741254765394654450
+    second: Club dance floor-1.png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar of strawberry jam-1.png_0
+      name: Club dance floor-1.png_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 13
-        height: 12
+        x: 9
+        y: 10
+        width: 50
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1d35000b7c672110800000000000000
-      internalID: 1236075898273611036
+      spriteID: e0b0ad84ec9819490800000000000000
+      internalID: -7741254765394654450
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar of strawberry jam-1.png_0: 1236075898273611036
+      Club dance floor-1.png_0: -7741254765394654450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

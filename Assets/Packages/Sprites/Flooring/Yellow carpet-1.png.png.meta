@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 525e817a5e0ab4482ad4bb0dd1979a42
+guid: a228d8c9e21af475b9636f9645ac1258
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1236075898273611036
-    second: Jar of strawberry jam-1.png_0
+      213: 4411524787309264709
+    second: Yellow carpet-1.png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar of strawberry jam-1.png_0
+      name: Yellow carpet-1.png_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 13
-        height: 12
+        x: 5
+        y: 7
+        width: 57
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1d35000b7c672110800000000000000
-      internalID: 1236075898273611036
+      spriteID: 54f3669bb62e83d30800000000000000
+      internalID: 4411524787309264709
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar of strawberry jam-1.png_0: 1236075898273611036
+      Yellow carpet-1.png_0: 4411524787309264709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

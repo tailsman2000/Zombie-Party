@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 525e817a5e0ab4482ad4bb0dd1979a42
+guid: 5004d94d763074b64ac4cb21493b76d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1236075898273611036
-    second: Jar of strawberry jam-1.png_0
+      213: 4840005205046964469
+    second: Refilling Blood bowl_0
+  - first:
+      213: 3677079301874883702
+    second: Refilling Blood bowl_1
+  - first:
+      213: -2594217380466672405
+    second: Refilling Blood bowl_2
+  - first:
+      213: -1058175954280196000
+    second: Refilling Blood bowl_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar of strawberry jam-1.png_0
+      name: Refilling Blood bowl_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 13
-        height: 12
+        x: 0
+        y: 49
+        width: 48
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1d35000b7c672110800000000000000
-      internalID: 1236075898273611036
+      spriteID: 5f0bddd27172b2340800000000000000
+      internalID: 4840005205046964469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refilling Blood bowl_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67c913f942c970330800000000000000
+      internalID: 3677079301874883702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refilling Blood bowl_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 17
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: becb327890d7ffbd0800000000000000
+      internalID: -2594217380466672405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refilling Blood bowl_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068d447739a9051f0800000000000000
+      internalID: -1058175954280196000
       vertices: []
       indices: 
       edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar of strawberry jam-1.png_0: 1236075898273611036
+      Refilling Blood bowl_0: 4840005205046964469
+      Refilling Blood bowl_1: 3677079301874883702
+      Refilling Blood bowl_2: -2594217380466672405
+      Refilling Blood bowl_3: -1058175954280196000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

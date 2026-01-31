@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 525e817a5e0ab4482ad4bb0dd1979a42
+guid: 6ccb7bef708374929a5133be053d02e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1236075898273611036
-    second: Jar of strawberry jam-1.png_0
+      213: 5088538537133822753
+    second: Vampire walking_ body_0
+  - first:
+      213: 8673956636122251240
+    second: Vampire walking_ body_1
+  - first:
+      213: 8462822670997798
+    second: Vampire walking_ body_2
+  - first:
+      213: 3377913762561455003
+    second: Vampire walking_ body_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +122,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar of strawberry jam-1.png_0
+      name: Vampire walking_ body_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 13
+        x: 0
+        y: 15
+        width: 14
         height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1d35000b7c672110800000000000000
-      internalID: 1236075898273611036
+      spriteID: 1235fbbd6de1e9640800000000000000
+      internalID: 5088538537133822753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vampire walking_ body_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 16
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef753d9a95106870800000000000000
+      internalID: 8673956636122251240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vampire walking_ body_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6291a1374e01e1000800000000000000
+      internalID: 8462822670997798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vampire walking_ body_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b93f06b8ba2c0ee20800000000000000
+      internalID: 3377913762561455003
       vertices: []
       indices: 
       edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar of strawberry jam-1.png_0: 1236075898273611036
+      Vampire walking_ body_0: 5088538537133822753
+      Vampire walking_ body_1: 8673956636122251240
+      Vampire walking_ body_2: 8462822670997798
+      Vampire walking_ body_3: 3377913762561455003
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

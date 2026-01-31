@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 525e817a5e0ab4482ad4bb0dd1979a42
+guid: dc08a5820e47a44f096e5b122c9e23d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1236075898273611036
-    second: Jar of strawberry jam-1.png_0
+      213: -8147132359940473992
+    second: Zombie head_ walk animation_0
+  - first:
+      213: -6676379586054387275
+    second: Zombie head_ walk animation_1
+  - first:
+      213: -8749526807890372900
+    second: Zombie head_ walk animation_2
+  - first:
+      213: -3838588740130189927
+    second: Zombie head_ walk animation_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar of strawberry jam-1.png_0
+      name: Zombie head_ walk animation_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 2
-        width: 13
-        height: 12
+        y: 24
+        width: 11
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1d35000b7c672110800000000000000
-      internalID: 1236075898273611036
+      spriteID: 87b78a3b8429fee80800000000000000
+      internalID: -8147132359940473992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie head_ walk animation_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 25
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b90f83b32cb853a0800000000000000
+      internalID: -6676379586054387275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie head_ walk animation_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 8
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd6dfe6a9bf639680800000000000000
+      internalID: -8749526807890372900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie head_ walk animation_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99dc9b9e0e79abac0800000000000000
+      internalID: -3838588740130189927
       vertices: []
       indices: 
       edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar of strawberry jam-1.png_0: 1236075898273611036
+      Zombie head_ walk animation_0: -8147132359940473992
+      Zombie head_ walk animation_1: -6676379586054387275
+      Zombie head_ walk animation_2: -8749526807890372900
+      Zombie head_ walk animation_3: -3838588740130189927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
