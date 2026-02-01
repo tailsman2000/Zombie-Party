@@ -74,6 +74,8 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnMaskTogglePerformed += ToggleMask;
 
         LevelManager.OnDeath += Disable;
+
+        LevelManager.OnWin += Disable;
     }
 
     private void ToggleMask(object sender, EventArgs e)

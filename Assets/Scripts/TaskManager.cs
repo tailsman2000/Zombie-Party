@@ -67,6 +67,9 @@ public class TaskManager : MonoBehaviour
             //Listen to this, fires when tasks are all done
             OnTasksComplete?.Invoke(this, EventArgs.Empty);
             Debug.Log("TASKS COMPLETE");
+
+            StartCoroutine(LevelManager.instance.GameOver(LevelManager.GameOverReason.WIN));
+
         
         }
     }
