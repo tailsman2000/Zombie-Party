@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        float castDistance = 1f;
+        float castDistance = 4f;
 
         Vector2 interactionDirection = GameInput.Instance.GetMovementVectorNormalized();
 
