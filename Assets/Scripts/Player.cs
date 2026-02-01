@@ -1,4 +1,5 @@
 using System;
+using System.Runtime;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -7,6 +8,8 @@ using UnityEngine.Rendering.Universal;
 public class Player : MonoBehaviour
 {
     private const string HAS_MOVE_INPUT_ANIMATION_KEY = "HasMoveInput";
+
+    private const string PLAYER_MOVE_MULTIPLIER_ANIMATION_KEY = "PlayerMoveMultiplier";
 
     [Header("Movement")]
     [SerializeField]
@@ -17,6 +20,9 @@ public class Player : MonoBehaviour
 
 
     [Header("Interaction")]
+    [SerializeField]
+    private float interactDistance = 2.5f;
+
     [SerializeField]
     private LayerMask interactionLayerMask;
     
@@ -59,6 +65,7 @@ public class Player : MonoBehaviour
     private void GameInput_InteractPerformed(object sender, EventArgs e)
     {
         Debug.Log("interact " + currentInteractorObject);
+
         if(currentInteractorObject != null)
         {
             //Interact with object
@@ -76,11 +83,20 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        float speed = GameInput.Instance.IsSprinting ? sprintSpeed : moveSpeed; 
+        float speed = moveSpeed;
+        float animationMultiplier = 1f;
+
+        if(GameInput.Instance.IsSprinting)
+        {
+            speed = sprintSpeed;
+            animationMultiplier = 1.5f;
+        } 
+
+        animator.SetFloat(PLAYER_MOVE_MULTIPLIER_ANIMATION_KEY, animationMultiplier);
         
         Vector2 movementInput = GameInput.Instance.GetMovementVectorNormalized();
 
-        if(movementInput != Vector2.zero)
+        if(movementInput != Vector2.zero && !GameManager.Instance.IsGamePaused)
         {
             animator.SetBool(HAS_MOVE_INPUT_ANIMATION_KEY, true);
 
@@ -98,8 +114,6 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        float castDistance = 1f;
-
         Vector2 interactionDirection = GameInput.Instance.GetMovementVectorNormalized();
 
         if(interactionDirection != Vector2.zero)
@@ -107,14 +121,14 @@ public class Player : MonoBehaviour
             lastInteractionDirection = interactionDirection;
         }
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, lastInteractionDirection, castDistance, interactionLayerMask);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, lastInteractionDirection, interactDistance, interactionLayerMask);
     
         if(hitInfo)
         {
 
             if(hitInfo.transform.GetComponent<I_Interactable>() != null)
             {
-                Debug.Log(hitInfo.transform + " has interactable");
+                Debug.Log(hitInfo.transform.gameObject + " has interactable");
 
                 currentInteractorObject = hitInfo.transform.gameObject;
             } else
