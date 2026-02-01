@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class JamInteractable : MonoBehaviour, I_Interactable
 {
     public bool eqipped = false;
+    public static Action equipJam;
+    public static Action unequipJam;
 
      public void Interact()
     {
@@ -20,7 +23,7 @@ public class JamInteractable : MonoBehaviour, I_Interactable
             
             eqipped = true;
 
-            
+            equipJam?.Invoke();
         }
         else
         {
@@ -29,6 +32,8 @@ public class JamInteractable : MonoBehaviour, I_Interactable
             Player.Instance.isHoldingSomething = false;
 
             eqipped = false; 
+
+            unequipJam?.Invoke();
         }
         
     }

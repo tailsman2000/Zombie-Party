@@ -30,6 +30,7 @@ public class DeadbodyCleanup : MonoBehaviour
         if(currentCleanUpProgressImage.fillAmount >= 1f)
         {
             //Cleaning done, task done
+            GetComponent<TaskScript>().TaskComplete();
         }
     }
 

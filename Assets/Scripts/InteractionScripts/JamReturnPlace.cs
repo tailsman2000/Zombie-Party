@@ -12,6 +12,7 @@ public class JamReturnPlace : MonoBehaviour
 
             //task complete
             //idk prolly add sum particles
+            GetComponent<TaskScript>().TaskComplete();
         }
     }
 }
