@@ -11,14 +11,16 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public static Action LevelStart;
     public static Action OnDeath;
+    public static Action OnWin;
     private float radiation;
     //[Header("Radiation")]
     [SerializeField] private float radiationRate;
     [SerializeField] private Slider radiationSlider;
 
     //[Header("Game Over")]
-    public enum GameOverReason { RADIATION, ZOMBIE };
+    public enum GameOverReason { RADIATION, ZOMBIE, WIN };
     [SerializeField] private CanvasGroup gameOverCanvasGroup;
+    [SerializeField] private CanvasGroup gameWinCanvasGroup;
     [SerializeField] private TextMeshProUGUI gameOverDescription;
     [SerializeField] private CinemachineCamera playerCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,26 +65,48 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator GameOver(GameOverReason reason)
     {
-        OnDeath?.Invoke();
+        if(reason == GameOverReason.WIN)
+        {
+            OnWin?.Invoke();
 
-        StartCoroutine(Zoom());
+            StartCoroutine(Zoom());
 
-        gameOverCanvasGroup.gameObject.SetActive(true);
-        gameOverCanvasGroup.alpha = 0;
+            gameWinCanvasGroup.gameObject.SetActive(true);
+
+            gameOverCanvasGroup.alpha = 0;
+            
+            float duration = 2;
+
+            while(gameWinCanvasGroup.alpha < 1)
+            {
+                gameWinCanvasGroup.alpha += Time.deltaTime / duration;
+                yield return null;
+            }
+        } else
+        {
+            
         
-        if(reason == GameOverReason.RADIATION)
-        {
-            gameOverDescription.text = "The radiation got to you and you decided to join the gang...";
-        }
-        else if(reason == GameOverReason.ZOMBIE)
-        {
-            gameOverDescription.text = "A zombie noticed you weren't one of their groupies...";
-        }
-        float duration = 2;
-        while(gameOverCanvasGroup.alpha < 1)
-        {
-            gameOverCanvasGroup.alpha += Time.deltaTime / duration;
-            yield return null;
+            OnDeath?.Invoke();
+
+            StartCoroutine(Zoom());
+
+            gameOverCanvasGroup.gameObject.SetActive(true);
+            gameOverCanvasGroup.alpha = 0;
+            
+            if(reason == GameOverReason.RADIATION)
+            {
+                gameOverDescription.text = "The radiation got to you and you decided to join the gang...";
+            }
+            else if(reason == GameOverReason.ZOMBIE)
+            {
+                gameOverDescription.text = "A zombie noticed you weren't one of their groupies...";
+            }
+            float duration = 2;
+            while(gameOverCanvasGroup.alpha < 1)
+            {
+                gameOverCanvasGroup.alpha += Time.deltaTime / duration;
+                yield return null;
+            }
         }
     }
 
