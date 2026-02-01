@@ -1,55 +1,82 @@
+using System;
 using UnityEngine;
-using TMPro;
+using UnityEngine.EventSystems;
+
 public class TaskManager : MonoBehaviour
 {
-    public static TaskManager instance { get; private set; }
+    public static TaskManager Instance {get; private set;}
+
     public enum TaskType
     {
-        SANDWICH = 0,
-        VACUUM = 1,
-        BLOOD = 2,
-        SAMPLE = 3,
-        BRAIN = 4
+        DeadBody, 
+        Jam,
+        BloodBowl         
     }
-    private int[] progress = new int[5];
-    [SerializeField] private int[] required = {1, 5, 1, 5, 1};
-    [SerializeField] private TextMeshProUGUI[] taskTexts;
-    private string[] taskDescriptions = new string[5];
-    [SerializeField] private Color completedColor;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    public event EventHandler OnTasksComplete;
+
+    public int deadBodyTasks;
+
+    public int jamTasks;
+
+    public int bloodBowlTasks;
+
+
     void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this; 
+
+        deadBodyTasks = 0;
+        jamTasks = 0;
+        bloodBowlTasks = 0;
     }
-    void Start()
+
+
+    public void AddTask(TaskType type)
     {
-        for(int i = 0; i < taskTexts.Length; i++)
+        if(type == TaskType.DeadBody)
         {
-            taskDescriptions[i] = taskTexts[i].text;
-        }
-    }
-    private void SetTaskText(int index)
-    {
-        taskTexts[index].text = taskDescriptions[index] + " (" + progress[index] + "/" + required[index] + ")";
-    }
-    public void TaskProgress(TaskType type)
-    {
-        progress[(int)type]++;
-        taskTexts[(int)type].text = taskDescriptions[(int)type] + " (" + progress[(int)type] + "/" + required[(int)type] + ")";
-        if(progress[(int)type] >= required[(int)type])
+            deadBodyTasks++;
+        } else if(type == TaskType.BloodBowl)
         {
-            TaskCompleted(type);
+            bloodBowlTasks++;
+        } else
+        {
+            jamTasks++;
         }
     }
-    private void TaskCompleted(TaskType type)
+
+
+    public void CompleteTask(TaskType type)
     {
-        taskTexts[(int)type].color = completedColor;
+        if(type == TaskType.DeadBody)
+        {
+            deadBodyTasks--;
+        } else if(type == TaskType.BloodBowl)
+        {
+            bloodBowlTasks--;
+        } else
+        {
+            jamTasks--;
+        }
+
+
+        if(deadBodyTasks + bloodBowlTasks + jamTasks <= 0)
+        {
+            //Listen to this, fires when tasks are all done
+            OnTasksComplete?.Invoke(this, EventArgs.Empty);
+            Debug.Log("TASKS COMPLETE");
+        
+        }
     }
+
+
+    void Update()
+    {
+        // Debug.Log("Dead Bodies that need cleaning with vacum: " + deadBodyTasks);
+        // Debug.Log("Blood bowls that need to be refilled: " + bloodBowlTasks);
+        // Debug.Log("Jam that needs to be put back in kitchen: " + jamTasks);
+    }
+
 }

@@ -60,7 +60,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2071726815
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &6801191405265772971
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeadbodyCleanup
   currentCleanUpProgressImage: {fileID: 6831444423476035520}
+  background: {fileID: 7332386352999282848}
   cleanUpSpeed: 0.3
 --- !u!212 &6183473390611718743
 SpriteRenderer:
@@ -322,8 +323,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2071726815
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7184460455559679792, guid: 3386776ca0e6e46a6b12e7d0b2358fc1, type: 3}

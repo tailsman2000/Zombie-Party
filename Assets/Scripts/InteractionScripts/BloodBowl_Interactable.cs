@@ -26,7 +26,7 @@ public class BloodBowl_Interactable : MonoBehaviour, I_Interactable
     private void Start()
     {
         animator = this.GetComponent<Animator>();
-        currentFillAmount.fillAmount = 0f;
+        TaskManager.Instance.AddTask(TaskManager.TaskType.BloodBowl);
     }
     public void Interact()
     {
@@ -38,11 +38,16 @@ public class BloodBowl_Interactable : MonoBehaviour, I_Interactable
         
         if(currentFillAmount.fillAmount >= 1f)
         {
-            //Task complete
-            EnableVisual(false);
+            //Task complete 
+            EnableVisual(false);  
+
             animator.SetBool(FILL_UP_BOWL_AMOUNT_ANIMATION_KEY, true);
 
-            GetComponent<TaskScript>().TaskComplete();
+            TaskManager.Instance.CompleteTask(TaskManager.TaskType.BloodBowl);
+
+            //just so bloodbowl stays in scene
+            this.enabled = false; 
+
         }
     }
 
@@ -63,7 +68,7 @@ public class BloodBowl_Interactable : MonoBehaviour, I_Interactable
 
     private void EnableVisual(bool enable)
     {
-        //currentFillAmount.enabled = enable;
-        currentFillAmountBackground.GetComponent<RawImage>().enabled = enable;
+        currentFillAmount.gameObject.SetActive(enable);
+        currentFillAmountBackground.SetActive(enable);
     }
 }

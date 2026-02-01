@@ -7,16 +7,25 @@ public class DeadbodyCleanup : MonoBehaviour
     [SerializeField]
     private Image currentCleanUpProgressImage; 
 
+    [SerializeField] private GameObject background;
+
     [SerializeField] 
     private float cleanUpSpeed;
 
 
+    void Start()
+    {
+        TaskManager.Instance.AddTask(TaskManager.TaskType.DeadBody);
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        currentCleanUpProgressImage.gameObject.SetActive(true);
-
-        //Just the background child 
-        transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        if(collision.TryGetComponent(out VacumeInteractable vacum) && vacum.eqipped)
+        {
+            currentCleanUpProgressImage.gameObject.SetActive(true);
+            background.SetActive(true);
+            //Just the background child 
+        }
+       
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -30,7 +39,12 @@ public class DeadbodyCleanup : MonoBehaviour
         if(currentCleanUpProgressImage.fillAmount >= 1f)
         {
             //Cleaning done, task done
-            GetComponent<TaskScript>().TaskComplete();
+            TaskManager.Instance.CompleteTask(TaskManager.TaskType.DeadBody);
+
+            //get rid of body 
+
+            Debug.Log("DESTROY ME");
+            Destroy(this.gameObject);
         }
     }
 
