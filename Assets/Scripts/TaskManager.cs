@@ -17,6 +17,7 @@ public class TaskManager : MonoBehaviour
 <<<<<<< Updated upstream
     private string[] taskDescriptions;
 =======
+    private string[] taskDescriptions = new string[5];
 >>>>>>> Stashed changes
     [SerializeField] private Color completedColor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
