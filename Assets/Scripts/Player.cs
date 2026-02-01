@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
     
     [SerializeField]
     private SpriteRenderer playerHead;
+    [SerializeField]
+    private SpriteRenderer masked;
+    bool isMasked=false;
 
     private Rigidbody2D rb;
 
@@ -45,7 +48,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-
+        masked.enabled=false;
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
     }
@@ -60,6 +63,17 @@ public class Player : MonoBehaviour
     private void ToggleMask(object sender, EventArgs e)
     {
         //Toggle on and off mask
+        isMasked=!isMasked;
+        if (!isMasked)
+        {
+            playerHead.enabled=true;
+            masked.enabled=false;
+        }
+        else
+        {
+            playerHead.enabled=false;
+            masked.enabled=true;   
+        }
     }
 
     private void GameInput_InteractPerformed(object sender, EventArgs e)
@@ -101,9 +115,16 @@ public class Player : MonoBehaviour
             animator.SetBool(HAS_MOVE_INPUT_ANIMATION_KEY, true);
 
             bool flipPlayer = movementInput.x < 0;
-
+            
             playerBody.flipX = flipPlayer;
-            playerHead.flipX = flipPlayer;
+            if (playerHead.enabled)
+            {
+                playerHead.flipX = flipPlayer;   
+            }
+            else
+            {
+                masked.flipX = flipPlayer;
+            }
         } else
         { 
             animator.SetBool(HAS_MOVE_INPUT_ANIMATION_KEY, false);   
@@ -140,6 +161,4 @@ public class Player : MonoBehaviour
             currentInteractorObject = null;
         }
     }
-
-
 }
