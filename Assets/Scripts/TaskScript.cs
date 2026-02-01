@@ -7,10 +7,7 @@ public class TaskScript : MonoBehaviour
     [SerializeField] private GameObject yellowAura;
     [SerializeField] private bool needsVacuum;
     [SerializeField] private bool needsJam;
-<<<<<<< Updated upstream
-=======
     [SerializeField] private bool equippable;
->>>>>>> Stashed changes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,8 +26,6 @@ public class TaskScript : MonoBehaviour
             VacumeInteractable.equipVacuum += EnableInteract;
             VacumeInteractable.unequipVacuum += DisableInteract;
         }
-<<<<<<< Updated upstream
-=======
         if(equippable)
         {
             VacumeInteractable.equipVacuum += DisableInteract;
@@ -38,7 +33,6 @@ public class TaskScript : MonoBehaviour
             JamInteractable.equipJam += DisableInteract;
             JamInteractable.unequipJam += EnableInteract;
         }
->>>>>>> Stashed changes
     }
 
     public void EnableInteract()
