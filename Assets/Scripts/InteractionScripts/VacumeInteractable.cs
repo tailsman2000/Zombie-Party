@@ -4,6 +4,8 @@ public class VacumeInteractable : MonoBehaviour, I_Interactable
 {
     public bool eqipped = false;
 
+    public GameObject arrowIndicator;
+
     public void Interact()
     {
         if(!eqipped)
@@ -28,6 +30,8 @@ public class VacumeInteractable : MonoBehaviour, I_Interactable
 
             eqipped = false; 
         }
+
+        arrowIndicator.SetActive(!eqipped);
         
     }
     

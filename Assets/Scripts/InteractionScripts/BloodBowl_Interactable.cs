@@ -14,6 +14,7 @@ public class BloodBowl_Interactable : MonoBehaviour, I_Interactable
     [SerializeField]
     private GameObject currentFillAmountBackground;
 
+    [SerializeField] private GameObject arrowIndicator;
 
     [SerializeField]
     private float drainAmount; 
@@ -48,6 +49,8 @@ public class BloodBowl_Interactable : MonoBehaviour, I_Interactable
             //just so bloodbowl stays in scene
             this.enabled = false; 
 
+            arrowIndicator.SetActive(false);
+
         }
     }
 
@@ -70,5 +73,7 @@ public class BloodBowl_Interactable : MonoBehaviour, I_Interactable
     {
         currentFillAmount.gameObject.SetActive(enable);
         currentFillAmountBackground.SetActive(enable);
+
+        arrowIndicator.SetActive(!enable);
     }
 }

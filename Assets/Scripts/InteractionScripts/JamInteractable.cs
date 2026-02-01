@@ -4,6 +4,8 @@ public class JamInteractable : MonoBehaviour, I_Interactable
 {
     public bool eqipped = false;
 
+    [SerializeField] private GameObject arrowIndicator;
+
      public void Interact()
     {
         if(!eqipped)
@@ -18,9 +20,7 @@ public class JamInteractable : MonoBehaviour, I_Interactable
 
             player.Unmask();
             
-            eqipped = true;
-
-            
+            eqipped = true;            
         }
         else
         {
@@ -30,6 +30,9 @@ public class JamInteractable : MonoBehaviour, I_Interactable
 
             eqipped = false; 
         }
+
+
+        arrowIndicator.SetActive(!eqipped);
         
     }
     
