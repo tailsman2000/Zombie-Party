@@ -146,6 +146,8 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        float castDistance = 1f;
+
         Vector2 interactionDirection = GameInput.Instance.GetMovementVectorNormalized();
 
         if(interactionDirection != Vector2.zero)
