@@ -7265,7 +7265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.68235296}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22975,7 +22975,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 215021100286121667, guid: 91e71b7299deb40ecbf2859f57c814c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.131
+      value: -0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 215021100286121667, guid: 91e71b7299deb40ecbf2859f57c814c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.996
       objectReference: {fileID: 0}
     - target: {fileID: 503749041984556376, guid: 91e71b7299deb40ecbf2859f57c814c0, type: 3}
       propertyPath: m_Name
@@ -22987,11 +22991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5340870820408899297, guid: 91e71b7299deb40ecbf2859f57c814c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -370.26
+      value: -370.219
       objectReference: {fileID: 0}
     - target: {fileID: 5340870820408899297, guid: 91e71b7299deb40ecbf2859f57c814c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -230.62
+      value: -230.701
       objectReference: {fileID: 0}
     - target: {fileID: 5340870820408899297, guid: 91e71b7299deb40ecbf2859f57c814c0, type: 3}
       propertyPath: m_LocalPosition.z
