@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class JamInteractable : MonoBehaviour, I_Interactable
 {
     public bool eqipped = false;
-    public static Action equipJam;
-    public static Action unequipJam;
+
+    [SerializeField] private GameObject arrowIndicator;
 
      public void Interact()
     {
@@ -21,9 +20,7 @@ public class JamInteractable : MonoBehaviour, I_Interactable
 
             player.Unmask();
             
-            eqipped = true;
-
-            equipJam?.Invoke();
+            eqipped = true;            
         }
         else
         {
@@ -32,9 +29,10 @@ public class JamInteractable : MonoBehaviour, I_Interactable
             Player.Instance.isHoldingSomething = false;
 
             eqipped = false; 
-
-            unequipJam?.Invoke();
         }
+
+
+        arrowIndicator.SetActive(!eqipped);
         
     }
     

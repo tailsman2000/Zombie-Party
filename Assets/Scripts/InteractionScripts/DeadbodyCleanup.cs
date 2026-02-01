@@ -12,6 +12,7 @@ public class DeadbodyCleanup : MonoBehaviour
     [SerializeField] 
     private float cleanUpSpeed;
 
+    [SerializeField] private GameObject arrowIndicator;
 
     void Start()
     {
@@ -23,6 +24,8 @@ public class DeadbodyCleanup : MonoBehaviour
         {
             currentCleanUpProgressImage.gameObject.SetActive(true);
             background.SetActive(true);
+
+            arrowIndicator.SetActive(false);
             //Just the background child 
         }
        

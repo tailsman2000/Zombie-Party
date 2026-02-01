@@ -1,12 +1,10 @@
-using System;
 using UnityEngine;
 
 public class VacumeInteractable : MonoBehaviour, I_Interactable
 {
     public bool eqipped = false;
 
-    public static Action equipVacuum;
-    public static Action unequipVacuum;
+    public GameObject arrowIndicator;
 
     public void Interact()
     {
@@ -23,8 +21,6 @@ public class VacumeInteractable : MonoBehaviour, I_Interactable
             player.Unmask();
             
             eqipped = true;
-
-            equipVacuum?.Invoke();
         }
         else
         {
@@ -33,9 +29,9 @@ public class VacumeInteractable : MonoBehaviour, I_Interactable
             Player.Instance.isHoldingSomething = false;
 
             eqipped = false; 
-
-            unequipVacuum?.Invoke();
         }
+
+        arrowIndicator.SetActive(!eqipped);
         
     }
     
