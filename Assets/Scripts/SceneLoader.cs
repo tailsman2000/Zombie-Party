@@ -4,7 +4,7 @@ public static class SceneLoader
     public enum Scene
     {
         StartScreen,
-        SidScene,
+        Gameplay,
     }
 
     private static Scene targetScene;

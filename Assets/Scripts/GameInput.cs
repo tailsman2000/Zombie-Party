@@ -27,7 +27,7 @@ public class GameInput : MonoBehaviour
         playerInputActions = new PlayerInputActions();
 
         //Only enable input when game should start so when player presses play button
-        //playerInputActions.Enable();
+        playerInputActions.Enable();
 
         playerInputActions.Player.Sprint.performed += (InputAction.CallbackContext context) =>
         {
@@ -41,7 +41,7 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Interact.performed += GameInput_OnInteractPerformed;
 
-        playerInputActions.Player.Interact.performed += GameInput_OnMaskTogglePerformed; 
+        playerInputActions.Player.ToggleMask.performed += GameInput_OnMaskTogglePerformed; 
 
         playerInputActions.Player.Pause.performed += GameInput_Pause;
 

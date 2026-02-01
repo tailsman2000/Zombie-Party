@@ -103,11 +103,14 @@ public class LevelManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+       // SceneManager.LoadScene("MainMenu");
+        SceneLoader.Load(SceneLoader.Scene.StartScreen);
     }
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneLoader.Load(SceneLoader.Scene.Gameplay);
+
+       // SceneManager.LoadScene("Gameplay");
     }
 }

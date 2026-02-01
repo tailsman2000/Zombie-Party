@@ -18,7 +18,7 @@ public class EnemyBehaviorScript : MonoBehaviour
     [Header("Player detection")]
     private float sus;
     private bool aggroed = false;
-    private GameObject player => Player.instance.gameObject;
+    private GameObject player => Player.Instance.gameObject;
     [SerializeField] private float susChargeSpeed;
     [SerializeField] private float unsussyDelay;
     [SerializeField] private GameObject questionMarkObject;
@@ -101,8 +101,19 @@ public class EnemyBehaviorScript : MonoBehaviour
             StartCoroutine(LookTowards(0.1f, Mathf.Atan2((player.transform.position - transform.position).y, (player.transform.position - transform.position).x) * Mathf.Rad2Deg));
             questionMarkObject.SetActive(true);
             while(enemyLosScript.playerInSight) {
-                sus += susChargeSpeed * Time.deltaTime;
+                //Things get slower sussed out when player is masked
+                bool isPlayerMasked = Player.Instance.isMasked; 
+
+                sus += (isPlayerMasked ? susChargeSpeed / 5f : susChargeSpeed) * Time.deltaTime;
+
+                if(isPlayerMasked)
+                {
+                    //idk if i used your code right there, feel free to optimize ig lollllll
+                    StartCoroutine(LookTowards(0.1f, Mathf.Atan2((player.transform.position - transform.position).y, (player.transform.position - transform.position).x) * Mathf.Rad2Deg));
+                }
+
                 questionMarkIcon.fillAmount = sus / 100f;
+
                 if(sus >= 100)
                 {
                     Aggro();
@@ -116,7 +127,7 @@ public class EnemyBehaviorScript : MonoBehaviour
     public IEnumerator Unsussy()
     {
         yield return new WaitForSeconds(unsussyDelay);
-        ResetSus();
+        ResetSusWithMovement();
     }
 
     private void ResetSus()
@@ -127,7 +138,17 @@ public class EnemyBehaviorScript : MonoBehaviour
         questionMarkObject.SetActive(false);
     }
 
-    private void Aggro()
+    private void ResetSusWithMovement()
+    {
+        sus = 0;
+        exclamationMarkObject.SetActive(false);
+        questionMarkIcon.fillAmount = 0f;
+        questionMarkObject.SetActive(false);
+
+        moveRoutine = StartCoroutine(RandomMovement(minWaitTime, maxWaitTime));
+    }
+
+    public void Aggro()
     {
         ResetSus();
         exclamationMarkObject.SetActive(true);
@@ -166,5 +187,9 @@ public class EnemyBehaviorScript : MonoBehaviour
         {
             Aggro();
         }
+    }
+    public bool IsAggroed()
+    {
+        return aggroed;
     }
 }

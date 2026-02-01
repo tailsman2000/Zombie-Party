@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject SettingsMenu; 
-    [SerializeField] private GameObject Backstory; 
+    [SerializeField] private Animator idleGuy;
 
     [Header("Buttons")]
     [SerializeField]
@@ -27,18 +27,17 @@ public class MainMenuUI : MonoBehaviour
 
         playButton.onClick.AddListener(() =>
         {
-            Backstory.SetActive(true);
-            this.gameObject.SetActive(false);
+            this.GetComponent<Animator>().SetTrigger("FadeOut");
+            
+            idleGuy.SetTrigger("MenuGuyMove");
+
         });
 
         continueButton.onClick.AddListener(() =>
         {
-            Debug.Log("yoo");
-            // Start game right now this just enables the input
-
             GameManager.Instance.StartGame();
             
-            SceneLoader.Load(SceneLoader.Scene.SidScene);
+            SceneLoader.Load(SceneLoader.Scene.Gameplay);
         });
 
         settingsButton.onClick.AddListener(() =>
@@ -53,6 +52,10 @@ public class MainMenuUI : MonoBehaviour
             //Quit game
             Application.Quit();
         });
+    }
+
+    public void ShowBackstory()
+    {
 
     }
 }

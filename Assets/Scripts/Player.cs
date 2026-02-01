@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 public class Player : MonoBehaviour
 {
-    public static Player instance { get; private set; }
+    public static Player Instance { get; private set; }
     private const string HAS_MOVE_INPUT_ANIMATION_KEY = "HasMoveInput";
 
     private const string PLAYER_MOVE_MULTIPLIER_ANIMATION_KEY = "PlayerMoveMultiplier";
@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject currentInteractorObject;
 
+    public Transform interactAttachPoint;
+    public bool isHoldingSomething;
+
     private Vector2 lastInteractionDirection;
 
 
@@ -39,9 +42,10 @@ public class Player : MonoBehaviour
     
     [SerializeField]
     private SpriteRenderer playerHead;
+
     [SerializeField]
-    private SpriteRenderer masked;
-    bool isMasked=false;
+    private SpriteRenderer zombieMask;
+    public bool isMasked = false;
 
     private Rigidbody2D rb;
 
@@ -49,9 +53,9 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
         } else
         {
             Destroy(gameObject);
@@ -60,6 +64,7 @@ public class Player : MonoBehaviour
 
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
+
     }
 
     void Start()
@@ -74,16 +79,26 @@ public class Player : MonoBehaviour
     private void ToggleMask(object sender, EventArgs e)
     {
         //Toggle on and off mask
+         
+        if(isHoldingSomething) return;
+
         isMasked=!isMasked;
+
         if (!isMasked)
         {
             playerHead.enabled=true;
-            masked.enabled=false;
+
+            playerHead.flipX = playerBody.flipX;
+
+            zombieMask.enabled=false;
         }
         else
         {
             playerHead.enabled=false;
-            masked.enabled=true;   
+
+            zombieMask.enabled=true;
+
+            zombieMask.flipX = playerBody.flipX;   
         }
     }
 
@@ -125,17 +140,19 @@ public class Player : MonoBehaviour
         {
             animator.SetBool(HAS_MOVE_INPUT_ANIMATION_KEY, true);
 
-            bool flipPlayer = movementInput.x < 0;
+            bool flipPlayer = movementInput.x < 0 || (movementInput.x == 0 && movementInput.y > 0);
             
             playerBody.flipX = flipPlayer;
+
             if (playerHead.enabled)
             {
                 playerHead.flipX = flipPlayer;   
             }
             else
             {
-                masked.flipX = flipPlayer;
+                zombieMask.flipX = flipPlayer;
             }
+
         } else
         { 
             animator.SetBool(HAS_MOVE_INPUT_ANIMATION_KEY, false);   
@@ -146,8 +163,6 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        float castDistance = 1f;
-
         Vector2 interactionDirection = GameInput.Instance.GetMovementVectorNormalized();
 
         if(interactionDirection != Vector2.zero)
@@ -157,14 +172,21 @@ public class Player : MonoBehaviour
 
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, lastInteractionDirection, interactDistance, interactionLayerMask);
     
+        if(isHoldingSomething)
+        {
+            currentInteractorObject = interactAttachPoint.GetChild(0).gameObject;  
+
+            return;   
+        }
+
         if(hitInfo)
         {
-
             if(hitInfo.transform.GetComponent<I_Interactable>() != null)
             {
                 Debug.Log(hitInfo.transform.gameObject + " has interactable");
 
                 currentInteractorObject = hitInfo.transform.gameObject;
+
             } else
             {
                 currentInteractorObject = null;
@@ -177,11 +199,32 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.TryGetComponent(out EnemyBehaviorScript enemy))
         {
-            StartCoroutine(LevelManager.instance.GameOver(LevelManager.GameOverReason.ZOMBIE));
+            if(enemy.IsAggroed())
+            {
+                //Lose if touched with aggroed enemy
+                StartCoroutine(LevelManager.instance.GameOver(LevelManager.GameOverReason.ZOMBIE));
+            // } else
+            // {
+            //     //Aggro enemy
+            //     enemy.Aggro();
+         }
         }
+        
+        
     }
 
+    public void Unmask()
+    {
+        isMasked = false;
+
+        playerHead.enabled = true;
+
+        playerHead.flipX = playerBody.flipX;
+
+        zombieMask.enabled = false;
+    }
     private void Disable()
     {
         GetComponent<Collider2D>().enabled = false;
