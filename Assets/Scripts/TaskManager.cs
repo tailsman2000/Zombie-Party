@@ -14,7 +14,10 @@ public class TaskManager : MonoBehaviour
     private int[] progress = new int[5];
     [SerializeField] private int[] required = {1, 5, 1, 5, 1};
     [SerializeField] private TextMeshProUGUI[] taskTexts;
+<<<<<<< Updated upstream
     private string[] taskDescriptions;
+=======
+>>>>>>> Stashed changes
     [SerializeField] private Color completedColor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
