@@ -22,6 +22,8 @@ public class GameInput : MonoBehaviour
     {
         Instance = this;
 
+        DontDestroyOnLoad(this);
+
         playerInputActions = new PlayerInputActions();
 
         //Only enable input when game should start so when player presses play button

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this; 
+        DontDestroyOnLoad(this);
     }
 
     void Start()

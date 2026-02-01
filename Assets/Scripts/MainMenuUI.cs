@@ -1,3 +1,4 @@
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject SettingsMenu; 
+    [SerializeField] private GameObject Backstory; 
 
     [Header("Buttons")]
     [SerializeField]
@@ -16,17 +18,27 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField]
     private Button quitButton;
 
+    [SerializeField]
+    private Button continueButton;
+
 
     private void Start()
     {
+
         playButton.onClick.AddListener(() =>
         {
-            //Start game right now this just enables the input
+            Backstory.SetActive(true);
+            this.gameObject.SetActive(false);
+        });
+
+        continueButton.onClick.AddListener(() =>
+        {
+            Debug.Log("yoo");
+            // Start game right now this just enables the input
+
             GameManager.Instance.StartGame();
             
-            //Hide the main menu 
-            this.gameObject.SetActive(false);
-
+            SceneLoader.Load(SceneLoader.Scene.SidScene);
         });
 
         settingsButton.onClick.AddListener(() =>
