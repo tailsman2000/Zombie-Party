@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
     {
         OnDeath?.Invoke();
 
-        playerCamera.m_Lens.OrthographicSize = 3f;
+        //playerCamera.m_Lens.OrthographicSize = 3f;
 
         gameOverCanvasGroup.gameObject.SetActive(true);
         gameOverCanvasGroup.alpha = 0;
