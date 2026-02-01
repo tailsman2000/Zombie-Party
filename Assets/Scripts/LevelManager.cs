@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
             radiationSlider.value = radiation / 100f;
             yield return null;
         }
-        GameOver(GameOverReason.RADIATION);
+        StartCoroutine(GameOver(GameOverReason.RADIATION));
     }
     private void DecreaseRadiation(float amount)
     {
@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
     {
         OnDeath?.Invoke();
 
-        //playerCamera.m_Lens.OrthographicSize = 3f;
+        StartCoroutine(Zoom());
 
         gameOverCanvasGroup.gameObject.SetActive(true);
         gameOverCanvasGroup.alpha = 0;
@@ -84,6 +84,21 @@ public class LevelManager : MonoBehaviour
             gameOverCanvasGroup.alpha += Time.deltaTime / duration;
             yield return null;
         }
+    }
+
+    private IEnumerator Zoom()
+    {
+        float start = playerCamera.Lens.OrthographicSize;
+        float target = 3f;
+        float duration = 2f;
+        float t = 0f;
+        while (t < duration) {
+            t += Time.deltaTime;
+            playerCamera.Lens.OrthographicSize = Mathf.Lerp(start, target, t / duration);
+            yield return null;
+        }
+        
+        playerCamera.Lens.OrthographicSize = 3f;
     }
 
     public void ReturnToMenu()

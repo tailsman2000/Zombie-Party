@@ -17184,7 +17184,7 @@ MonoBehaviour:
   radiationSlider: {fileID: 1881789402}
   gameOverCanvasGroup: {fileID: 436889350}
   gameOverDescription: {fileID: 614585268}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1631910453}
 --- !u!1 &1284850527
 GameObject:
   m_ObjectHideFlags: 0
