@@ -84,6 +84,8 @@ public class Player : MonoBehaviour
 
         isMasked=!isMasked;
 
+        Debug.Log(playerHead + " " + zombieMask);
+        
         if (!isMasked)
         {
             playerHead.enabled=true;
@@ -211,7 +213,6 @@ public class Player : MonoBehaviour
             //     enemy.Aggro();
          }
         }
-        
         
     }
 
