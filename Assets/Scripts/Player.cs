@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 public class Player : MonoBehaviour
 {
+    public static Player instance { get; private set; }
     private const string HAS_MOVE_INPUT_ANIMATION_KEY = "HasMoveInput";
 
     [Header("Movement")]
@@ -39,6 +40,14 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
@@ -49,6 +58,8 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnInteractPerformed += GameInput_InteractPerformed; 
 
         GameInput.Instance.OnMaskTogglePerformed += ToggleMask;
+
+        LevelManager.OnDeath += Disable;
     }
 
     private void ToggleMask(object sender, EventArgs e)
@@ -127,5 +138,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(LevelManager.instance.GameOver(LevelManager.GameOverReason.ZOMBIE));
+        }
+    }
 
+    private void Disable()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        this.enabled = false;
+    }
 }

@@ -18,7 +18,7 @@ public class EnemyBehaviorScript : MonoBehaviour
     [Header("Player detection")]
     private float sus;
     private bool aggroed = false;
-    [SerializeField] private GameObject player;
+    private GameObject player => Player.instance.gameObject;
     [SerializeField] private float susChargeSpeed;
     [SerializeField] private float unsussyDelay;
     [SerializeField] private GameObject questionMarkObject;
@@ -26,19 +26,25 @@ public class EnemyBehaviorScript : MonoBehaviour
     [SerializeField] private GameObject exclamationMarkObject;
     [SerializeField] private GameObject losCone;
     [SerializeField] private GameObject losCircle;
+    [SerializeField] private LayerMask obstacleLayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         moveRoutine = StartCoroutine(RandomMovement(minWaitTime, maxWaitTime));
+        //Canvas canvas = angleFodder.GetComponent<Canvas>();
+        //canvas.worldCamera = Camera.main;
+        //canvas.planeDistance = 1;
     }
 
     private IEnumerator RandomMovement(float min, float max)
     {
         while(true) {
             int angle;
+            int attempt = 0;
             do {
+                attempt++;
                 angle = Random.Range(0, 360);
-            } while(Physics2D.Linecast(transform.position, player.transform.position, LayerMask.GetMask("Obstacles")).collider != null);
+            } while(Physics2D.Linecast(transform.position, player.transform.position, obstacleLayer).collider != null && attempt < 5);
             
             yield return StartCoroutine(LookTowards(0.15f, angle));
             yield return StartCoroutine(MoveForDuration(Random.Range(0.5f, 3)));
@@ -139,7 +145,7 @@ public class EnemyBehaviorScript : MonoBehaviour
             moveRoutine = null;
         }
         yield return null;
-        while(Physics2D.Linecast(transform.position, player.transform.position, LayerMask.GetMask("Obstacles")).collider == null)
+        while(Physics2D.Linecast(transform.position, player.transform.position, obstacleLayer).collider == null)
         {
             Vector3 dir = (player.transform.position - transform.position).normalized;
             transform.position += dir * aggroSpeed * Time.deltaTime;
