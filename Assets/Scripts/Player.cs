@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-
         masked.enabled=false;
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
@@ -116,9 +115,8 @@ public class Player : MonoBehaviour
             animator.SetBool(HAS_MOVE_INPUT_ANIMATION_KEY, true);
 
             bool flipPlayer = movementInput.x < 0;
-
+            
             playerBody.flipX = flipPlayer;
-            playerHead.flipX = flipPlayer;
             if (playerHead.enabled)
             {
                 playerHead.flipX = flipPlayer;   
@@ -163,6 +161,4 @@ public class Player : MonoBehaviour
             currentInteractorObject = null;
         }
     }
-
-
 }
