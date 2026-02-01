@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Shriek
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - Obstacles
   - 
   - 
   - 
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: characters
     uniqueID: 2071726815
+    locked: 0
+  - name: UI
+    uniqueID: 2967698767
     locked: 0
   m_RenderingLayers:
   - Default
